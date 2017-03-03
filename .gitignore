@@ -3,6 +3,7 @@ playground.ipynb
 
 # output
 figures/
+outputs/
 
 # ipython notebook checkpoint
 .ipynb_checkpoints/
