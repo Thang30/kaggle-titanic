@@ -10,13 +10,9 @@ def plot_correlation_map(df):
     corr = df.corr()
     
     fig , ax = plt.subplots(figsize = (12, 10))
-    
-    # Return a matplotlib colormap object
-    cmap = sns.diverging_palette(220 ,10 ,as_cmap = True )
-    
-    # Plot a heatmap
+    cmap = sns.diverging_palette(220 ,10 ,as_cmap = True )    
     ax = sns.heatmap(corr, cmap = cmap, square = True, 
-                                 ax=ax, annot = True)
+                                 ax = ax, annot = True)
     # Save the figure
     fig.savefig('./figures/correlation_map.png', 
                       bbox_inches='tight')
@@ -28,18 +24,16 @@ def plot_categories(df, category, target):
     
     # Save the figure
     ax.savefig('./figures/%s distribution.png' %category, 
-                      bbox_inches='tight')
+                      bbox_inches = 'tight')
    
 def plot_histogram(df, variable, target):
     fig = plt.figure(figsize = (8, 6))
     
     # plot histogram segmented by output
     for output, label, color in zip(range(2), ['Not Survived', 'Survived'], ['r', 'g']):
-        df[df[target] == output][variable].plot.hist(color = color, 
-                                                                            label = label,
-                                                                            alpha = 0.3, 
-                                                                            edgecolor = 'k')
-    
+        df[df[target] == output][variable].plot.hist(color = color, label = label,                                                                            
+                                                                            alpha = 0.3, edgecolor = 'k')
+                                                                               
     plt.xlabel('%s' %variable)
     plt.title("The distribution of %s?" %variable)
     plt.legend(loc='best')
